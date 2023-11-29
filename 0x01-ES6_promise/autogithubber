@@ -1,0 +1,9 @@
+#!/bin/bash
+#this simplifies githubbing
+echo filename
+read varname
+vi $varname
+npx eslint --fix $varname
+git add .
+git commit -m "solution to $varname"
+git push
