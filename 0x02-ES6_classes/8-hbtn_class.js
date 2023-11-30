@@ -15,7 +15,7 @@ export default class HolbertonClass {
 
   // Setters
   set size(size) {
-    if (typeof size !== 'Number') {
+    if (typeof size !== 'number') {
       throw new TypeError('Size must be a number');
     }
     this._size = size;
