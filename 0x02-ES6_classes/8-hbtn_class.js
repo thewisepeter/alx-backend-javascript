@@ -25,11 +25,7 @@ export default class HolbertonClass {
     if (typeof location !== 'string') {
       throw new TypeError('Code must be a string');
     }
-    this._code = code;
-  }
-
-  get [Symbol.toStringTag]() {
-    return this._code;
+    this._location = location;
   }
 
   // Casting to Number
