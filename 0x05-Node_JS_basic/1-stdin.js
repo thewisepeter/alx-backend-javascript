@@ -10,6 +10,6 @@ const rl = readline.createInterface({
 
 rl.question('', (name) => {
   console.log(`Your name is: ${name}`);
-  console.log('This imporatnt software is now closing');
+  console.log('This important software is now closing');
   rl.close();
 });
