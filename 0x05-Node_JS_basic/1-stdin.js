@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 });
 
 rl.question('Your name is: ', (name) => {
-  `Your name is: ${name}`;
+  console.log(`Your name is: ${name}`);
   console.log('This important software is now closing');
   rl.close();
 });
