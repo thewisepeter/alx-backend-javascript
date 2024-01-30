@@ -8,8 +8,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.question('Your name is: ', (name) => {
-  console.log(`Your name is: ${name}`);
+rl.question('Your name is: ', () => {
   console.log('This important software is now closing');
   rl.close();
 });
