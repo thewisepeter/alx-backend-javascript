@@ -15,21 +15,28 @@ function countStudents(path) {
     const validLines = lines.slice(1).filter((line) => line.trim() !== '');
 
     // Calculate the number of students
-    const numberOfStudents = validLines.length;
+    let numberOfStudents = 0;
+    validLines.forEach(() => {
+      numberOfStudents += 1;
+    });
     console.log(`Number of students: ${numberOfStudents}`);
 
     // Count the number of students in each field
     const fields = lines[0].split(',');
     for (let i = 0; i < fields.length; i++) {
       const field = fields[i];
-      const studentsInField = validLines.filter((line) => {
+      let studentsInField = 0;
+      validLines.forEach((line) => {
         const values = line.split(',');
-        return values[i].trim() !== '';
-      }).length;
+        if (values[i].trim() !== '') {
+          studentsInField += 1;
+        }
+      });
       console.log(`Number of students in ${field}: ${studentsInField}. List: ${validLines.map((line) => line.split(',')[i]).join(', ')}`);
     }
   } catch (err) {
     console.error('Cannot load the database:', err.message);
   }
 }
+
 module.exports = countStudents;
