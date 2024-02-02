@@ -51,7 +51,7 @@ app.get('/', (request, response) => {
 
 app.get('/students', (request, response) => {
   countStudents(process.argv[2].toString()).then((studentInfo) => {
-    response.send(['This is the list of our students', output].join('\n'));
+    response.send(['This is the list of our students', studentInfo].join('\n'));
   })
     .catch(() => {
       response.status(404).send('This is the list of our students\nCannot load the database');
