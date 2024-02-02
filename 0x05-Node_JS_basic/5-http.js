@@ -13,7 +13,7 @@ function countStudents(path) {
       if (error) {
         reject(new Error('Cannot load the database'));
       } else {
-        const output = '';
+        const studentInfo = '';
         const lines = data.toString().split('\n');
         for (let i = 0; i < lines.length; i += 1) {
           if (lines[i]) {
