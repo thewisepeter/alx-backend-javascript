@@ -1,20 +1,19 @@
 const express = require('express');
-
 const { readFile } = require('fs');
 
 const app = express();
 const port = 1245;
 
-function countStudents(fileName) {
+function countStudents(path) {
   const students = {};
   const fields = {};
   let length = 0;
   return new Promise((resolve, reject) => {
-    readFile(fileName, (err, data) => {
-      if (err) {
-        reject(err);
+    readFile(path, 'utf-8', (error, data) => {
+      if (error) {
+        reject(new Error('Cannot load the database'));
       } else {
-        let output = '';
+        let studentInfo = '';
         const lines = data.toString().split('\n');
         for (let i = 0; i < lines.length; i += 1) {
           if (lines[i]) {
@@ -33,28 +32,30 @@ function countStudents(fileName) {
           }
         }
         const l = length - 1;
-        output += `Number of students: ${l}\n`;
+        studentInfo += `Number of students: ${l}\n`;
         for (const [key, value] of Object.entries(fields)) {
           if (key !== 'field') {
-            output += `Number of students in ${key}: ${value}. `;
-            output += `List: ${students[key].join(', ')}\n`;
+            studentInfo += `Number of students in ${key}: ${value}. `;
+            studentInfo += `List: ${students[key].join(', ')}\n`;
           }
         }
-        resolve(output);
+        resolve(studentInfo);
       }
     });
   });
 }
 
-app.get('/', (req, res) => {
-  res.send('Hello Holberton School!');
+app.get('/', (request, response) => {
+  response.send('Hello Holberton School!');
 });
-app.get('/students', (req, res) => {
-  countStudents(process.argv[2].toString()).then((output) => {
-    res.send(['This is the list of our students', output].join('\n'));
-  }).catch(() => {
-    res.send('This is the list of our students\nCannot load the database');
-  });
+
+app.get('/students', (request, response) => {
+  countStudents(process.argv[2].toString()).then((studentInfo) => {
+    response.send(['This is the list of our students', output].join('\n'));
+  })
+    .catch(() => {
+      response.status(404).send('This is the list of our students\nCannot load the database');
+    });
 });
 
 app.listen(port, () => {
