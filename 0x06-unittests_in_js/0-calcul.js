@@ -1,11 +1,5 @@
 function calculateNumber(a, b){
-    const roundedA = Math.round(a);
-    const roundedB = Math.round(b);
-
-    // Calculate the sum of the rounded values
-    const sum = roundedA + roundedB;
-
-    return sum;
+    return (Math.round(a) + Math.round(b));
 }
 
 module.exports = calculateNumber;
