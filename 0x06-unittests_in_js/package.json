@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "mocha": "^10.2.0"
+  },
+  "name": "0x06-unittests_in_js",
+  "description": "0x06. Unittests in JS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
