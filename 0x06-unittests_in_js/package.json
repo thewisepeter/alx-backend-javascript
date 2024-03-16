@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "chai": "^5.1.0",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "sinon": "^17.0.1"
   },
   "name": "0x06-unittests_in_js",
   "description": "0x06. Unittests in JS",
