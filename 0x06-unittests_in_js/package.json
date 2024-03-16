@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "chai": "^5.1.0",
     "mocha": "^10.2.0"
   },
   "name": "0x06-unittests_in_js",
@@ -9,7 +10,6 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "mocha"
   },
