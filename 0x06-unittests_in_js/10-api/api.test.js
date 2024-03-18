@@ -164,16 +164,16 @@ describe('/login', () => {
     });
   });
   
-  it('should return the correct status 404 with invalid get value', () => {
+  it('should return the correct status 404 with invalid route', () => {
     const data = {
       username: 'Peter',
     };
     request.post({
-      url: 'http://localhost:7865/login',
+      url: 'http://localhost:7865/invalid_route',
       body: data,
       json: true,
     }, (error, res, body) => {
       expect(res.statusCode).to.equal(404);
     });
-  });
+  });  
 });
