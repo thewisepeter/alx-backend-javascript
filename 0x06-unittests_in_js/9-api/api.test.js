@@ -77,3 +77,4 @@ describe('Cart Page', () => {
       done(error);
     });
   });
+});
