@@ -121,7 +121,7 @@ describe('/login', () => {
       url: 'http://localhost:7865/login',
       json: { userName: 'Peter' }
     }, (error, res, body) => {
-      expect(res.body).to.be.equal('Welcome Peter');
+      expect(body).to.be.equal('Welcome Peter');
     });
   });
   
