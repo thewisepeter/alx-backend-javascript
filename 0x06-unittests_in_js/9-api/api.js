@@ -8,10 +8,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/cart/:id([0-9]+)', function (req, res) {
-  res.send(`Payment methods for cart ${req.params.id}`);
-
+    const cartId = req.params.id;
+    if (!cartId) {
+      res.status(400).send('Cart ID is required');
+    } else {
+      res.send(`Payment methods for cart ${cartId}`);
+    }
 });
-
+  
 app.listen(port, () => {
   console.log('API available on localhost port 7865');
 });
