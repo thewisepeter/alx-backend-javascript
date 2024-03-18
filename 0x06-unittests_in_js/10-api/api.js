@@ -18,7 +18,7 @@ app.get('/cart/:id([0-9]+)', function (req, res) {
   }
 });
 
-app.get('/available_payments', (req, res) => {
+app.get('/available_payments', function (req, res) => {
   res.set('Content-Type', 'application/json');
   res.send({
     payment_methods: {
@@ -28,7 +28,7 @@ app.get('/available_payments', (req, res) => {
   });
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', function (req, res) => {
   res.send(`Welcome ${req.body.userName}`);
 });
 
