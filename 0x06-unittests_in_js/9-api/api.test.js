@@ -36,36 +36,45 @@ describe('Index Page', () => {
 });
 
 describe('Cart Page', () => {
-  it('should respond with status code 200 when :id is a number', (done) => {
-    request('http://localhost:7865/cart/123', (error, res, body) => {
-      if (error) return done(error);
+  it('should have correct status code with numeric id parameter', (done) => {
+    request('http://localhost:7865', (error, res, body) => {
       expect(res.statusCode).to.equal(200);
-      done();
+      done(error);
     });
   });
 
-  it('should respond with status code 404 when :id is NOT a number', (done) => {
-    request('http://localhost:7865/cart/abc', (error, res, body) => {
-      if (error) return done(error);
+  it('should have correct result with numeric id parameter', (done) => {
+    request('http://localhost:7865/cart/12', (error, res, body) => {
+      expect(body).to.contain('Payment methods for cart 12');
+      done(error);
+    });
+  });
+
+  it('should have correct status code when non-numeric id parameter is provided', (done) => {
+    request('http://localhost:7865/cart/hello', (error, res, body) => {
       expect(res.statusCode).to.equal(404);
-      done();
+      done(error);
     });
   });
 
-  
-  it('should have the correct Content-Type', (done) => {
-    request('http://localhost:7865/cart/123', (error, res, body) => {
-      if (error) return done(error);
+  it('should return the correct content-type given valid id parameter', (done) => {
+    request('http://localhost:7865/cart/12', (error, res, body) => {
       expect(res.headers['content-type']).to.equal('text/html; charset=utf-8');
-      done();
+      done(error);
     });
   });
 
-  it('should have the correct Content-Length', (done) => {
-    request('http://localhost:7865/cart/123', (error, res, body) => {
-      if (error) return done(error);
-      expect(res.headers['content-length']).to.equal('25'); // Update the expected value based on the actual content length
-      done();
+  it('should return the correct content in the body when non-numeric id is provided', (done) => {
+    request('http://localhost:7865/cart/hello', (error, res, body) => {
+      expect(body).to.contain('Cannot GET /cart/hello');
+      done(error);
+    });
+  });
+
+  it('should return the correct content length', (done) => {
+    request('http://localhost:7865/cart/12', (error, res, body) => {
+      expect(res.headers['content-length']).to.equal('27');
+      done(error);
     });
   });
 });
