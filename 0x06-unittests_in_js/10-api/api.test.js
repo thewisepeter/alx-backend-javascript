@@ -153,7 +153,7 @@ describe('/login', () => {
   
   it('should return the correct content length', () => {
     const data = {
-      userName: 'Betty',
+      userName: 'Peter',
     };
     request.post({
       url: 'http://localhost:7865/login',
@@ -166,7 +166,7 @@ describe('/login', () => {
   
   it('should return the correct status 404 with invalid get value', () => {
     const data = {
-      username: 'Betty',
+      username: 'Peter',
     };
     request.post({
       url: 'http://localhost:7865/login',
