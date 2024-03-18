@@ -43,28 +43,28 @@ describe('Cart Page', () => {
     });
   });
 
-  it('should have correct result with numeric id parameter', (done) => {
+  it('should have correct result when :id is a number', (done) => {
     request('http://localhost:7865/cart/12', (error, res, body) => {
       expect(body).to.contain('Payment methods for cart 12');
       done(error);
     });
   });
 
-  it('should have correct status code when non-numeric id parameter is provided', (done) => {
+  it('should have correct result when :id is not a number', (done) => {
     request('http://localhost:7865/cart/hello', (error, res, body) => {
       expect(res.statusCode).to.equal(404);
       done(error);
     });
   });
 
-  it('should return the correct content-type given valid id parameter', (done) => {
+  it('should return the correct content-type when :id is a number'', (done) => {
     request('http://localhost:7865/cart/12', (error, res, body) => {
       expect(res.headers['content-type']).to.equal('text/html; charset=utf-8');
       done(error);
     });
   });
 
-  it('should return the correct content in the body when non-numeric id is provided', (done) => {
+  it('should return the correct content in the body when :id is not a number', (done) => {
     request('http://localhost:7865/cart/hello', (error, res, body) => {
       expect(body).to.contain('Cannot GET /cart/hello');
       done(error);
@@ -77,4 +77,3 @@ describe('Cart Page', () => {
       done(error);
     });
   });
-});
