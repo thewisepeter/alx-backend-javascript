@@ -16,7 +16,7 @@ describe('Index Page', () => {
       expect(body).to.contain('Welcome to the payment system');
       done();
     });
-  });
+  }); 
 
   it('should have the correct Content-Type', (done) => {
     request('http://localhost:7865', (error, res, body) => {
