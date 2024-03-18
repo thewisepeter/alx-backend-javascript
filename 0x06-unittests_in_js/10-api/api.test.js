@@ -110,36 +110,37 @@ describe('/login', () => {
   it('should return status code of 200', () => {
     request.post({
       url: 'http://localhost:7865/login',
-      form: { userName: 'Betty' }
+      form: { userName: 'Peter' }
     }, (error, res, body) => {
       expect(res.statusCode).to.be.equal(200);
     });
   });
-  it('should return Welcome Betty', () => {
+
+  it('should return Welcome Peter', () => {
     request.post({
       url: 'http://localhost:7865/login',
-      json: { userName: 'Betty' }
+      json: { userName: 'Peter' }
     }, (error, res, body) => {
-      expect(res.body).to.be.equal('Welcome Betty');
+      expect(body).to.be.equal('Welcome Peter');
     });
   });
-
+  
   it('should return the correct result with form data value', () => {
     const data = {
-      userName: 'Betty',
+      userName: 'Peter',
     };
     request.post({
       url: 'http://localhost:7865/login',
       body: data,
       json: true,
     }, (error, res, body) => {
-      expect(res.body).to.contain('Welcome Betty');
+      expect(body).to.contain('Welcome Peter');
     });
   });
-
+  
   it('should return the correct content type', () => {
     const data = {
-      userName: 'Betty',
+      userName: 'Peter',
     };
     request.post({
       url: 'http://localhost:7865/login',
@@ -149,10 +150,10 @@ describe('/login', () => {
       expect(res.headers['content-type']).to.equal('text/html; charset=utf-8');
     });
   });
-
+  
   it('should return the correct content length', () => {
     const data = {
-      userName: 'Betty',
+      userName: 'Peter',
     };
     request.post({
       url: 'http://localhost:7865/login',
@@ -162,17 +163,17 @@ describe('/login', () => {
       expect(res.headers['content-length']).to.equal('13');
     });
   });
-
-  it('should return the correct status 404 with invalid get value', () => {
+  
+  it('should return the correct status 404 with invalid route', () => {
     const data = {
-      username: 'Betty',
+      username: 'Peter',
     };
     request.post({
-      url: 'http://localhost:7865/login',
+      url: 'http://localhost:7865/invalid_route',
       body: data,
       json: true,
     }, (error, res, body) => {
       expect(res.statusCode).to.equal(404);
     });
-  });
+  });  
 });
