@@ -133,7 +133,7 @@ describe('/login', () => {
       body: data,
       json: true,
     }, (error, res, body) => {
-      expect(body).to.contain('Welcome Betty');
+      expect(res.body).to.contain('Welcome Betty');
     });
   });
 
