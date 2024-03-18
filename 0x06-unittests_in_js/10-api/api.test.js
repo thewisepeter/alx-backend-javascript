@@ -110,18 +110,18 @@ describe('/login', () => {
   it('should return status code of 200', () => {
     request.post({
       url: 'http://localhost:7865/login',
-      form: { userName: 'Betty' }
+      form: { userName: 'Peter' }
     }, (error, res, body) => {
       expect(res.statusCode).to.be.equal(200);
     });
   });
 
-  it('should return Welcome Betty', () => {
+  it('should return Welcome Peter', () => {
     request.post({
       url: 'http://localhost:7865/login',
-      json: { userName: 'Betty' }
+      json: { userName: 'Peter' }
     }, (error, res, body) => {
-      expect(res.body).to.be.equal('Welcome Betty');
+      expect(res.body).to.be.equal('Welcome Peter');
     });
   });
   
